@@ -1,14 +1,20 @@
-import socket
+ Simple Python Port Scanner
 
-target = input("Enter target IP address: ")
-print(f"Scanning target {target}...\n")
+A lightweight, multi-threaded TCP **port scanner** written in Python.  
+This project is for learning and authorized testing only.
 
-for port in range(20, 1025):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    socket.setdefaulttimeout(0.5)
-    result = s.connect_ex((target, port))
-    if result == 0:
-        print(f"Port {port} is open")
-    s.close()
+ Features
+ Multi-threaded scanning for speed
+ Accepts port ranges or comma-separated lists
+ Command-line options for threads and timeout
 
-print("\nScan complete.")
+ Requirements
+ Python 3.8+
+
+ Usage
+bash
+basic example
+python src/port_scanner.py --target 192.168.1.10 --ports 1-1024 --threads 100
+
+scan specific ports
+python src/port_scanner.py -t example.com -p 22,80,443
